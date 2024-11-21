@@ -10,7 +10,7 @@ import ViewPostModal from './components/ViewPostModal';
 
 function Dashboard() {
   const { data: petData } = useQuery(GET_USER_PETS);
-  
+
   const [selectedPet, setSelectedPet] = useState<null | Pet>(null);
   const [showCreatePostModal, setShowCreatePostModal] = useState(false);
   const [showPostsModal, setShowPostsModal] = useState(false);
@@ -41,30 +41,32 @@ function Dashboard() {
             <h4>{pet.name}</h4>
             <p>Type: {pet.type}</p>
             <p>Age: {pet.age}</p>
-            <Button
-              variant="primary"
-              className="me-2"
-              onClick={() => handleShowCreatePostModal(pet)}>Create Post</Button>
-            <Button 
-              variant="secondary" 
-              className="me-2"
-              onClick={() => handleShowPostsModal(pet)}>View Posts</Button>
+            <div className='d-flex button-wrap'>
+              <Button
+                variant="primary"
+                className="me-2"
+                onClick={() => handleShowCreatePostModal(pet)}>Create Post</Button>
+              <Button
+                variant="secondary"
+                className="me-2"
+                onClick={() => handleShowPostsModal(pet)}>View Posts</Button>
+            </div>
           </article>
         ))}
       </section>
 
-      <CreatePostModal 
+      <CreatePostModal
         selectedPet={selectedPet}
         showCreatePostModal={showCreatePostModal}
         setShowCreatePostModal={setShowCreatePostModal}
-         />
+      />
 
       <ViewPostModal
         showPostsModal={showPostsModal}
         setShowPostsModal={setShowPostsModal}
         selectedPet={selectedPet}
-        />
-      
+      />
+
     </Container>
   )
 }
