@@ -32,6 +32,7 @@ const userSchema = new Schema({
     ref: 'Pet'
   }]
 }, {
+  collection: 'pet_app_posts',
   toJSON: {
     transform(_, user) {
       delete user.password;
