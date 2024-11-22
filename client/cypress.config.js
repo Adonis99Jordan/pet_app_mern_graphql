@@ -1,5 +1,7 @@
 import { defineConfig } from "cypress";
 
+const is_prod = process.env.NODE.ENV === 'production';
+
 export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
