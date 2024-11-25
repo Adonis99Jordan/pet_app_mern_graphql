@@ -55,11 +55,13 @@ const pet_resolvers = {
         },
         // Create a post for a pet
         async createPost(_, args, context) {
+            console.log('create');
             if (!context.req.user) {
                 return {
                     errors: ['You are not authorized to perform this action']
                 };
             }
+            console.log(Post);
             try {
                 const post = await Post.create(args);
                 await Pet.findByIdAndUpdate(args.pet, {
@@ -72,6 +74,7 @@ const pet_resolvers = {
                 };
             }
             catch (error) {
+                console.log(error);
                 const errorMessage = errorHandler(error);
                 throw new GraphQLError(errorMessage);
             }

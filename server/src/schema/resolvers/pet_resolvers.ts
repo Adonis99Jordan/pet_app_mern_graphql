@@ -86,13 +86,15 @@ const pet_resolvers = {
 
     // Create a post for a pet
     async createPost(_: any, args: PostArguments, context: Context) {
-
+      console.log('create');
+      
       if (!context.req.user) {
         return {
           errors: ['You are not authorized to perform this action']
         }
       }
-
+      console.log(Post);
+      
       try {
         const post = await Post.create(args);
 
@@ -106,6 +108,8 @@ const pet_resolvers = {
           message: 'Post created successfully!'
         }
       } catch (error: any) {
+        console.log(error);
+        
         const errorMessage = errorHandler(error);
 
         throw new GraphQLError(errorMessage);
