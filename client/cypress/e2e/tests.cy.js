@@ -95,7 +95,7 @@ describe('Site Tests', () => {
       .contains(petName)
       .get('button')
       .first()
-      .click()
+      .click();
 
     cy.get('input[name="title"]').type(postTitle);
     cy.get('textarea[name="body"]').type('Oh happy day, I gets a tweat');
@@ -106,7 +106,7 @@ describe('Site Tests', () => {
       .contains(petName)
       .get('button')
       .contains('View Posts')
-      .click()
+      .click();
 
     cy.get('.modal-body').contains(postTitle);
 
